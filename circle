@@ -1,0 +1,18 @@
+while(true)
+do
+MovL(P2)
+Circle(P3, P4, 1)
+CP(100)
+local Option={SpeedL=50, AccL=20, Arch=0.3}
+Jump(P8, Option)
+Arc(P22, P6)
+MovL(P9)
+Arc(P10, P11)
+MovL(P17)
+Arc(P13, P16)
+MovL(P18)
+Arc(P19, P21)
+CP(0)
+Jump(P2, Option)
+
+end
