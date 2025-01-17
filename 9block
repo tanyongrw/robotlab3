@@ -1,0 +1,71 @@
+function vacuum()
+  DO(2,ON)
+  DO(1,off)
+  Wait(500)
+end
+
+function pressure()
+  DO(2,off)
+  DO(1,ON)
+  Wait(500)
+  DO(1,off)
+  DO(2,off)
+end
+
+local Option={SpeedL=50, AccL=20, Start=10, ZLimit=80, End=50}
+local Offset = {0, 0, 0, 0}
+local x = 0
+local y = 0
+local z = 0
+
+for k = 1,3
+do
+  for i = 1,3
+  do
+    for j = 1,3
+    do
+      Jump(P1, Option)
+      Offset = {0,0,-68,0}
+      RelMovL(Offset)
+      vacuum()
+      Offset = {0,0,68,0}
+      RelMovL(Offset)
+      Jump(P2, Option)
+      Offset = {0,0,-68,0}
+      RelMovL(Offset)
+      pressure()
+      Offset = {0,0,68,0}
+      RelMovL(Offset)
+      Offset = {0,0,-68,0}
+      RelMovL(Offset)
+      vacuum()
+      Offset = {0,0,68,0}
+      RelMovL(Offset)
+      Jump(P3, Option)
+      Offset = {x,y,0,0}
+      RelMovL(Offset)
+      Offset = {0,0,z-68,0}
+      RelMovL(Offset)
+      pressure()
+      Offset = {0,0,z+68,0}
+      RelMovL(Offset)
+      Offset = {0, 0, 0, 0}
+      y = y - 54
+    end
+    y = 0
+    x = x + 54
+  end
+  x = 0
+  y = 0
+  z = z + 27
+end
+Jump(P1, Option)
+
+
+
+
+
+
+
+
+
